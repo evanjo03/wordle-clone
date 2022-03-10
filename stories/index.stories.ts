@@ -1,5 +1,5 @@
 import { html, TemplateResult } from 'lit';
-import '../lib/define.js';
+import '../define.js';
 
 export default {
   title: 'WordleClone',

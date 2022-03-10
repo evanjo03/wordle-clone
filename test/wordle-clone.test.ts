@@ -1,7 +1,7 @@
 import { html } from 'lit';
 import { fixture, expect } from '@open-wc/testing';
-import { WordleClone } from '../lib/components/wordle-clone.js';
-import '../lib/define.js';
+import { WordleClone } from '../src/index.js';
+import '../define.js';
 
 describe('WordleClone', () => {
   it('has a default title "Hey there" and counter 5', async () => {
