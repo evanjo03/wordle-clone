@@ -13,6 +13,7 @@
     "sourceMap": true,
     "inlineSources": true,
     "rootDir": "./",
+    "strictNullChecks": false,
     "declaration": true,
     "incremental": true
   },
