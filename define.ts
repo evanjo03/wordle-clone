@@ -1,3 +1,3 @@
-import { WordleClone } from './src/wordle-clone.js';
+import { App } from './src/app.js';
 
-window.customElements.define('wordle-clone', WordleClone);
+window.customElements.define('app-root', App);

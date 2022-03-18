@@ -1,32 +1,25 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { html, css, LitElement, PropertyValueMap } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { html, LitElement } from 'lit';
+import { state } from 'lit/decorators.js';
 import { getWord } from './get-word.js';
+import style from './app-css.js';
 
-export class WordleClone extends LitElement {
-  static styles = css`
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--wordle-clone-text-color, #000);
-    }
-  `;
+import './grid.js';
+import './grid-row.js';
+import './grid-cell.js';
 
-  @property({ type: String }) title = 'Hey there';
-
-  @property({ type: String }) selectedWord: string;
-
-  @property({ type: Number }) counter = 5;
-
+export class App extends LitElement {
+  @state() private guesses: string[] = [];
+  @state() private selectedWord: string;
+  @state() private guessCount: number = 0;
   @state() private guessValue: string;
+
+  static styles = style;
 
   get validGuess(): boolean {
     return this.guessValue?.length === 5;
   }
 
-  protected firstUpdated(
-    _changedProperties: PropertyValueMap<any> | Map<PropertyKey, unknown>
-  ): void {
+  protected firstUpdated(): void {
     this.initData();
   }
 
@@ -37,23 +30,31 @@ export class WordleClone extends LitElement {
   render() {
     return html`
       <div>${this.selectedWord}</div>
-      <fieldset>
+      <div>${this.guessCount}</div>
+      <fieldset class="field__host">
         <input
           .value="${this.guessValue ?? ''}"
           id="guess"
           placeholder="Guess..."
+          class="field__input"
           onkeydown="return /[a-z]/i.test(event.key)"
           @keyup="${this.handleGuessKeyup}"
           @input="${this.handleGuessInput}"
           maxlength="5"
         />
         <button
+          class="field__button"
           @click="${this.handleGuessClick}"
           ?disabled="${!this.validGuess}"
         >
           Guess
         </button>
       </fieldset>
+      <game-grid
+        .word="${this.selectedWord}"
+        .guesses="${this.guesses}"
+        .guessCount="${this.guessCount}"
+      ></game-grid>
     `;
   }
 
@@ -72,6 +73,8 @@ export class WordleClone extends LitElement {
   }
 
   private makeGuess(): void {
-    console.log(this.guessValue);
+    this.guesses = [...this.guesses, this.guessValue];
+    this.guessCount += 1;
+    this.guessValue = null;
   }
 }

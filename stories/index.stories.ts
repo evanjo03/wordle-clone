@@ -26,14 +26,12 @@ interface ArgTypes {
 
 const Template: Story<ArgTypes> = ({
   title = 'Hello world',
-  counter = 5,
   textColor,
   slot,
 }: ArgTypes) => html`
   <wordle-clone
     style="--wordle-clone-text-color: ${textColor || 'black'}"
     .title=${title}
-    .counter=${counter}
   >
     ${slot}
   </wordle-clone>
@@ -42,19 +40,7 @@ const Template: Story<ArgTypes> = ({
 export const Regular = Template.bind({});
 
 export const CustomTitle = Template.bind({});
-CustomTitle.args = {
-  title: 'My title',
-};
 
 export const CustomCounter = Template.bind({});
-CustomCounter.args = {
-  counter: 123456,
-};
 
 export const SlottedContent = Template.bind({});
-SlottedContent.args = {
-  slot: html`<p>Slotted content</p>`,
-};
-SlottedContent.argTypes = {
-  slot: { table: { disable: true } },
-};

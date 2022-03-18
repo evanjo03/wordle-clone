@@ -1,19 +1,22 @@
 import { __decorate } from "tslib";
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import { html, css, LitElement } from 'lit';
-import { property, state } from 'lit/decorators.js';
+import { html, LitElement } from 'lit';
+import { state } from 'lit/decorators.js';
 import { getWord } from './get-word.js';
-export class WordleClone extends LitElement {
+import style from './app-css.js';
+import './grid.js';
+import './grid-row.js';
+import './grid-cell.js';
+export class App extends LitElement {
     constructor() {
         super(...arguments);
-        this.title = 'Hey there';
-        this.counter = 5;
+        this.guesses = [];
+        this.guessCount = 0;
     }
     get validGuess() {
         var _a;
         return ((_a = this.guessValue) === null || _a === void 0 ? void 0 : _a.length) === 5;
     }
-    firstUpdated(_changedProperties) {
+    firstUpdated() {
         this.initData();
     }
     async initData() {
@@ -23,23 +26,31 @@ export class WordleClone extends LitElement {
         var _a;
         return html `
       <div>${this.selectedWord}</div>
-      <fieldset>
+      <div>${this.guessCount}</div>
+      <fieldset class="field__host">
         <input
           .value="${(_a = this.guessValue) !== null && _a !== void 0 ? _a : ''}"
           id="guess"
           placeholder="Guess..."
+          class="field__input"
           onkeydown="return /[a-z]/i.test(event.key)"
           @keyup="${this.handleGuessKeyup}"
           @input="${this.handleGuessInput}"
           maxlength="5"
         />
         <button
+          class="field__button"
           @click="${this.handleGuessClick}"
           ?disabled="${!this.validGuess}"
         >
           Guess
         </button>
       </fieldset>
+      <game-grid
+        .word="${this.selectedWord}"
+        .guesses="${this.guesses}"
+        .guessCount="${this.guessCount}"
+      ></game-grid>
     `;
     }
     handleGuessInput(e) {
@@ -55,26 +66,22 @@ export class WordleClone extends LitElement {
         this.makeGuess();
     }
     makeGuess() {
-        console.log(this.guessValue);
+        this.guesses = [...this.guesses, this.guessValue];
+        this.guessCount += 1;
+        this.guessValue = null;
     }
 }
-WordleClone.styles = css `
-    :host {
-      display: block;
-      padding: 25px;
-      color: var(--wordle-clone-text-color, #000);
-    }
-  `;
-__decorate([
-    property({ type: String })
-], WordleClone.prototype, "title", void 0);
-__decorate([
-    property({ type: String })
-], WordleClone.prototype, "selectedWord", void 0);
-__decorate([
-    property({ type: Number })
-], WordleClone.prototype, "counter", void 0);
+App.styles = style;
 __decorate([
     state()
-], WordleClone.prototype, "guessValue", void 0);
-//# sourceMappingURL=wordle-clone.js.map
+], App.prototype, "guesses", void 0);
+__decorate([
+    state()
+], App.prototype, "selectedWord", void 0);
+__decorate([
+    state()
+], App.prototype, "guessCount", void 0);
+__decorate([
+    state()
+], App.prototype, "guessValue", void 0);
+//# sourceMappingURL=app.js.map
