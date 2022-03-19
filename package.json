@@ -1,9 +1,9 @@
 {
-  "name": "wordle-clone",
+  "name": "lit-wordle",
   "description": "Webcomponent wordle-clone following open-wc recommendations",
   "license": "MIT",
-  "author": "wordle-clone",
-  "version": "0.0.0",
+  "author": "evanjo03",
+  "version": "1.0.0",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
@@ -15,7 +15,8 @@
     "**/assets/*",
     "**/src/*.js",
     "**/src/*.d.ts",
-    "define.js"
+    "define.js",
+    "custom-elements.json"
   ],
   "scripts": {
     "analyze": "cem analyze --litelement",
