@@ -1,6 +1,6 @@
 import { LitElement, html } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
-import { getStatus } from './get-status.js';
+import { getStatus } from './status-utils.js';
 import style from './grid-row-css.js';
 
 @customElement('grid-row')

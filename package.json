@@ -7,9 +7,16 @@
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
-    ".": "./dist/src/index.js",
-    "./wordle-clone.js": "./dist/src/wordle-clone.js"
+    ".": "./src/index.js",
+    "./define": "./src/define.js",
+    "./define.js": "./src/define.js"
   },
+  "files": [
+    "**/assets/*",
+    "**/src/*.js",
+    "**/src/*.d.ts",
+    "define.js"
+  ],
   "scripts": {
     "analyze": "cem analyze --litelement",
     "start": "tsc && concurrently -k -r \"tsc --watch --preserveWatchOutput\" \"wds\"",

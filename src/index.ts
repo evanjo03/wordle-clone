@@ -1,1 +1,1 @@
-export { WordleClone } from './wordle-clone.js';
+export { App } from './app.js';

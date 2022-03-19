@@ -8,7 +8,7 @@ export class GameGrid extends LitElement {
   @property({ type: String }) word: string;
   @property({ type: Number }) guessCount: number;
 
-  styles = style;
+  static styles = style;
 
   render() {
     return html`${this.renderGuesses()} ${this.renderEmptyRows()}`;

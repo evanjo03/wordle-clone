@@ -12,8 +12,6 @@ export default css`
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     margin: 0.25rem;
     flex: 1;
-    min-height: 2rem;
-    min-width: 2rem;
     align-items: center;
     justify-content: center;
     border-radius: 0.125rem;
@@ -34,6 +32,7 @@ export default css`
 
   .cell-content {
     flex: 1;
+    font-size: 0.75em;
     text-align: center;
     text-transform: capitalize;
   }

@@ -1,6 +1,5 @@
 import { TemplateResult } from 'lit';
 import '../define.js';
-
 declare const _default: {
   title: string;
   component: string;

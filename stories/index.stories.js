@@ -13,7 +13,6 @@ const Template = ({ title = 'Hello world', textColor, slot, }) => html `
   <wordle-clone
     style="--wordle-clone-text-color: ${textColor || 'black'}"
     .title=${title}
-
   >
     ${slot}
   </wordle-clone>

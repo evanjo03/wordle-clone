@@ -1,8 +1,7 @@
 import { html, LitElement } from 'lit';
 import { state } from 'lit/decorators.js';
-import { getWord } from './get-word.js';
+import { getWord, isWord } from './word-utils.js';
 import style from './app-css.js';
-
 import './grid.js';
 import './grid-row.js';
 import './grid-cell.js';
@@ -16,7 +15,7 @@ export class App extends LitElement {
   static styles = style;
 
   get validGuess(): boolean {
-    return this.guessValue?.length === 5;
+    return this.guessValue?.length === 5 && isWord(this.guessValue);
   }
 
   protected firstUpdated(): void {
@@ -29,32 +28,33 @@ export class App extends LitElement {
 
   render() {
     return html`
-      <div>${this.selectedWord}</div>
-      <div>${this.guessCount}</div>
-      <fieldset class="field__host">
-        <input
-          .value="${this.guessValue ?? ''}"
-          id="guess"
-          placeholder="Guess..."
-          class="field__input"
-          onkeydown="return /[a-z]/i.test(event.key)"
-          @keyup="${this.handleGuessKeyup}"
-          @input="${this.handleGuessInput}"
-          maxlength="5"
-        />
-        <button
-          class="field__button"
-          @click="${this.handleGuessClick}"
-          ?disabled="${!this.validGuess}"
-        >
-          Guess
-        </button>
-      </fieldset>
-      <game-grid
-        .word="${this.selectedWord}"
-        .guesses="${this.guesses}"
-        .guessCount="${this.guessCount}"
-      ></game-grid>
+      <div class="container__host">
+        <fieldset class="field__host">
+          <input
+            .value="${this.guessValue ?? ''}"
+            id="guess"
+            placeholder="Guess..."
+            class="field__input"
+            onkeydown="return /[a-z]/.test(event.key)"
+            @keyup="${this.handleGuessKeyup}"
+            @input="${this.handleGuessInput}"
+            maxlength="5"
+          />
+          <button
+            class="field__button"
+            @click="${this.handleGuessClick}"
+            ?disabled="${!this.validGuess}"
+          >
+            Guess
+          </button>
+        </fieldset>
+        <game-grid
+          class="grid__host"
+          .word="${this.selectedWord}"
+          .guesses="${this.guesses}"
+          .guessCount="${this.guessCount}"
+        ></game-grid>
+      </div>
     `;
   }
 
