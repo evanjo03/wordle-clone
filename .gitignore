@@ -21,5 +21,13 @@
 **/src/*.js
 **/src/*.js.map
 
+**/test/*.d.ts
+**/test/*.js
+**/test/*.js.map
+
+**/stories/*.d.ts
+**/stories/*.js
+**/stories/*.js.map
+
 storybook-static
 custom-elements.json
