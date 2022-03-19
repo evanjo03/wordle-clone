@@ -2,6 +2,10 @@ import { html, LitElement } from 'lit';
 import { state } from 'lit/decorators.js';
 import { getWord, isWord } from './word-utils.js';
 import style from './app-css.js';
+
+import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.72/dist/components/dialog/dialog.js';
+import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.72/dist/components/button/button.js';
+
 import './grid.js';
 import './grid-row.js';
 import './grid-cell.js';
@@ -9,8 +13,9 @@ import './grid-cell.js';
 export class App extends LitElement {
   @state() private guesses: string[] = [];
   @state() private selectedWord: string;
-  @state() private guessCount: number = 0;
   @state() private guessValue: string;
+  @state() private dialogOpen: boolean;
+  @state() private dialogText: string;
 
   static styles = style;
 
@@ -29,10 +34,11 @@ export class App extends LitElement {
   render() {
     return html`
       <div class="container__host">
-        <fieldset class="field__host">
+        <fieldset part="field" class="field__host">
           <input
             .value="${this.guessValue ?? ''}"
             id="guess"
+            part="input"
             placeholder="Guess..."
             class="field__input"
             onkeydown="return /[a-z]/.test(event.key)"
@@ -49,12 +55,31 @@ export class App extends LitElement {
           </button>
         </fieldset>
         <game-grid
+          part="grid"
           class="grid__host"
           .word="${this.selectedWord}"
           .guesses="${this.guesses}"
-          .guessCount="${this.guessCount}"
         ></game-grid>
       </div>
+      <sl-dialog
+        .open="${this.dialogOpen}"
+        label="Dialog"
+        id="dialog"
+        no-header
+        style="--width: 40vw;"
+        @sl-hide="${() => {
+          this.dialogOpen = false;
+        }}"
+      >
+        <div class="dialog__content">
+          <span class="dialog__span">${this.dialogText}</span>
+          <div class="dialog__buttonContainer">
+            <button class="dialog__button" @click="${this.handleConfirmClick}">
+              Ok
+            </button>
+          </div>
+        </div>
+      </sl-dialog>
     `;
   }
 
@@ -67,6 +92,14 @@ export class App extends LitElement {
     this.makeGuess();
   }
 
+  private handleConfirmClick(): void {
+    this.dialogOpen = false;
+
+    this.guesses = [];
+    this.guessValue = null;
+    this.initData();
+  }
+
   private handleGuessKeyup(e: KeyboardEvent): void {
     if (!(e.key === 'Enter' || e.keyCode === 13) || !this.validGuess) return;
     this.makeGuess();
@@ -74,7 +107,18 @@ export class App extends LitElement {
 
   private makeGuess(): void {
     this.guesses = [...this.guesses, this.guessValue];
-    this.guessCount += 1;
+
+    if (this.guessValue === this.selectedWord) {
+      this.dialogText = 'Nice work!';
+      this.dialogOpen = true;
+      return;
+    }
+
+    if (this.guesses?.length === 6) {
+      this.dialogText = 'Better luck next time!';
+      this.dialogOpen = true;
+      return;
+    }
     this.guessValue = null;
   }
 }

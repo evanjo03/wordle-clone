@@ -56,4 +56,43 @@ export default css`
   .grid__host {
     flex: 1;
   }
+
+  .dialog__content {
+    font-family: Arial, Helvetica, sans-serif;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .dialog__span {
+    padding: 0.5rem;
+    text-align: center;
+  }
+
+  .dialog__buttonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .dialog__button {
+    background: teal;
+    border: none;
+    padding: 0.25rem 1rem;
+    color: white;
+    opacity: 0.9;
+    max-width: 3rem;
+    border-radius: 0.25rem;
+  }
+
+  .dialog__button:hover:not(:disabled) {
+    transition: 0.3ms opacity all;
+    opacity: 1;
+    cursor: pointer;
+  }
 `;

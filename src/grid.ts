@@ -6,7 +6,6 @@ import style from './grid-css.js';
 export class GameGrid extends LitElement {
   @property({ type: Array }) guesses: string[];
   @property({ type: String }) word: string;
-  @property({ type: Number }) guessCount: number;
 
   static styles = style;
 

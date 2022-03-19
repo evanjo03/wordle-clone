@@ -9,6 +9,7 @@ export default css`
     display: flex;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
+    background: #fff;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     margin: 0.25rem;
     flex: 1;
@@ -18,7 +19,7 @@ export default css`
   }
 
   :host([status='incorrect']) {
-    background: red;
+    background: darkred;
     color: white;
   }
 
@@ -27,7 +28,7 @@ export default css`
     color: white;
   }
   :host([status='misplaced']) {
-    background: yellow;
+    background: gold;
   }
 
   .cell-content {
