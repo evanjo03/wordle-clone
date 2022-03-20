@@ -3,13 +3,13 @@
   "description": "Webcomponent wordle-clone following open-wc recommendations",
   "license": "MIT",
   "author": "evanjo03",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
     ".": "./src/index.js",
-    "./define": "./src/define.js",
-    "./define.js": "./src/define.js"
+    "./define": "./define.js",
+    "./define.js": "./define.js"
   },
   "files": [
     "**/assets/*",
