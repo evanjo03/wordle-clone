@@ -76,6 +76,7 @@ export default css`
   }
 
   .dialog__content {
+    border: 1px solid #d3d6da;
     font-family: Arial, Helvetica, sans-serif;
     background: #fff;
     display: flex;

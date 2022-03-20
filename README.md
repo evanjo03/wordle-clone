@@ -11,7 +11,11 @@ npm i lit-wordle
 Import the side effect registration of `<lit-wordle>` via:
 
 ```
+<script>
 import 'lit-wordle/define.js';
+</script>
+
+<lit-wordle></lit-wordle>
 ```
 
 Import the base class:

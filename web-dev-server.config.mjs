@@ -12,6 +12,8 @@ export default /** @type {import('@web/dev-server').DevServerConfig} */ ({
     exportConditions: ['browser', 'development'],
   },
 
+  port: 3000,
+
   /** Compile JS for older browsers. Requires @web/dev-server-esbuild plugin */
   // esbuildTarget: 'auto'
 

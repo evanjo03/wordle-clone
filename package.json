@@ -3,7 +3,7 @@
   "description": "Webcomponent wordle-clone following open-wc recommendations",
   "license": "MIT",
   "author": "evanjo03",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {

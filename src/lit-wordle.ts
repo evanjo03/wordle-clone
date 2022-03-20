@@ -4,7 +4,6 @@ import { getWord, isWord } from './word-utils.js';
 import style from './lit-wordle-css.js';
 
 import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.72/dist/components/dialog/dialog.js';
-import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.72/dist/components/button/button.js';
 
 import './grid.js';
 import './grid-row.js';
@@ -69,6 +68,11 @@ export class LitWordle extends LitElement {
         style="--width: 40vw;"
         @sl-hide="${() => {
           this.dialogOpen = false;
+        }}"
+        @sl-request-close="${(event: any) => {
+          if (event.detail.source === 'overlay') {
+            event.preventDefault();
+          }
         }}"
       >
         <div class="dialog__content">
