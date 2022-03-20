@@ -3,7 +3,7 @@ import '../define.js';
 
 export default {
   title: 'WordleClone',
-  component: 'wordle-clone',
+  component: 'lit-wordle',
 };
 
 interface Story<T> {
@@ -12,6 +12,6 @@ interface Story<T> {
   argTypes?: Record<string, unknown>;
 }
 
-const Template: Story<void> = () => html` <wordle-clone> </wordle-clone> `;
+const Template: Story<void> = () => html` <lit-wordle> </lit-wordle> `;
 
 export const Regular = Template.bind({});
