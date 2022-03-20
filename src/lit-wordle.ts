@@ -93,7 +93,8 @@ export class LitWordle extends LitElement {
 
   private handleGuessInput(e: Event): void {
     const inputElement = e.composedPath()[0] as HTMLInputElement;
-    this.guessValue = inputElement?.value;
+    // slice for mobile devices that don't support keydown configuration
+    this.guessValue = inputElement?.value?.slice(0, 5) ?? '';
   }
 
   private handleGuessClick(): void {
