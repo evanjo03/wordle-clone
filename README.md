@@ -1,76 +1,51 @@
-# \<wordle-clone>
+# Lit Wordle
 
-This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
-
-## Installation
-
-```bash
-npm i wordle-clone
-```
+Wordle clone built with Lit and web components.
 
 ## Usage
 
-```html
-<script type="module">
-  import 'wordle-clone/wordle-clone.js';
-</script>
-
-<wordle-clone></wordle-clone>
+```
+npm i lit-wordle
 ```
 
-## Linting and formatting
+Import the side effect registration of `<lit-wordle>` via:
 
-To scan the project for linting and formatting errors, run
-
-```bash
-npm run lint
+```
+import 'lit-wordle/define.js';
 ```
 
-To automatically fix linting and formatting errors, run
+Import the base class:
 
-```bash
-npm run format
+```
+import { LitWordle } from 'lit-wordle';
 ```
 
-## Testing with Web Test Runner
+## CSS Custom Properties
 
-To execute a single test run:
+`--guess-btn-bg-color`
 
-```bash
-npm run test
-```
+`--correct-bg-color`
 
-To run the tests in interactive watch mode run:
+`--incorrect-bg-color`
 
-```bash
-npm run test:watch
-```
+`--misplaced-bg-color`
 
-## Demoing with Storybook
+`--cell-font-size`
 
-To run a local instance of Storybook for your component, run
+`--cell-border-color`
 
-```bash
-npm run storybook
-```
+`--guess-field-font-size`
 
-To build a production version of Storybook, run
+`--font-color`
 
-```bash
-npm run storybook:build
-```
+`--font-family`
 
+## CSS Shadow Parts
 
-## Tooling configs
+`field`
 
-For most of the tools, the configuration is in the `package.json` to reduce the amount of files in your project.
+`field-input`
 
-If you customize the configuration a lot, you can consider moving them to individual files.
+`field-button`
 
-## Local Demo with `web-dev-server`
-
-```bash
-npm start
-```
-
-To run a local development server that serves the basic demo located in `demo/index.html`
+`grid`

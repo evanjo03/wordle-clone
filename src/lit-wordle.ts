@@ -1,7 +1,7 @@
 import { html, LitElement } from 'lit';
 import { state } from 'lit/decorators.js';
 import { getWord, isWord } from './word-utils.js';
-import style from './app-css.js';
+import style from './lit-wordle-css.js';
 
 import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.72/dist/components/dialog/dialog.js';
 import 'https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.0.0-beta.72/dist/components/button/button.js';
@@ -10,7 +10,7 @@ import './grid.js';
 import './grid-row.js';
 import './grid-cell.js';
 
-export class App extends LitElement {
+export class LitWordle extends LitElement {
   @state() private guesses: string[] = [];
   @state() private selectedWord: string;
   @state() private guessValue: string;
@@ -38,8 +38,7 @@ export class App extends LitElement {
           <input
             .value="${this.guessValue ?? ''}"
             id="guess"
-            part="input"
-            placeholder="Guess..."
+            part="field-input"
             class="field__input"
             onkeydown="return /[a-z]/.test(event.key)"
             @keyup="${this.handleGuessKeyup}"
@@ -48,6 +47,7 @@ export class App extends LitElement {
           />
           <button
             class="field__button"
+            part="field-button"
             @click="${this.handleGuessClick}"
             ?disabled="${!this.validGuess}"
           >
@@ -75,7 +75,7 @@ export class App extends LitElement {
           <span class="dialog__span">${this.dialogText}</span>
           <div class="dialog__buttonContainer">
             <button class="dialog__button" @click="${this.handleConfirmClick}">
-              Ok
+              OK
             </button>
           </div>
         </div>

@@ -1,3 +1,3 @@
-import { App } from './src/app.js';
+import { LitWordle } from './src/lit-wordle.js';
 
-window.customElements.define('app-root', App);
+window.customElements.define('lit-wordle', LitWordle);

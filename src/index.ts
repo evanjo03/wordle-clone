@@ -1,1 +1,1 @@
-export { App } from './app.js';
+export { LitWordle } from './lit-wordle.js';

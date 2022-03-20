@@ -10,30 +10,34 @@ export default css`
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
     background: #fff;
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border: 1px solid var(--_cell-border-color);
     margin: 0.25rem;
     flex: 1;
     align-items: center;
     justify-content: center;
-    border-radius: 0.125rem;
   }
 
   :host([status='incorrect']) {
-    background: darkred;
-    color: white;
+    border: none;
+    background: var(--_incorrect-bg-color);
+    color: #fff;
   }
 
   :host([status='correct']) {
-    background: green;
-    color: white;
+    border: none;
+    background: var(--_correct-bg-color);
+    color: #fff;
   }
+
   :host([status='misplaced']) {
-    background: gold;
+    border: none;
+    background: var(--_misplaced-bg-color);
+    color: #fff;
   }
 
   .cell-content {
     flex: 1;
-    font-size: 0.75em;
+    font-size: var(--_cell-font-size);
     text-align: center;
     text-transform: capitalize;
   }
