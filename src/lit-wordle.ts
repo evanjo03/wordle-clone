@@ -18,8 +18,12 @@ export class LitWordle extends LitElement {
 
   static styles = style;
 
+  get lowerCaseGuess(): string {
+    return this.guessValue?.toLowerCase();
+  }
+
   get validGuess(): boolean {
-    return this.guessValue?.length === 5 && isWord(this.guessValue);
+    return this.guessValue?.length === 5 && isWord(this.lowerCaseGuess);
   }
 
   protected firstUpdated(): void {
@@ -39,7 +43,7 @@ export class LitWordle extends LitElement {
             id="guess"
             part="field-input"
             class="field__input"
-            onkeydown="return /[a-z]/.test(event.key)"
+            onkeydown="return /[a-z]/i.test(event.key)"
             @keyup="${this.handleGuessKeyup}"
             @input="${this.handleGuessInput}"
             maxlength="5"
@@ -110,9 +114,9 @@ export class LitWordle extends LitElement {
   }
 
   private makeGuess(): void {
-    this.guesses = [...this.guesses, this.guessValue];
+    this.guesses = [...this.guesses, this.lowerCaseGuess];
 
-    if (this.guessValue === this.selectedWord) {
+    if (this.lowerCaseGuess === this.selectedWord) {
       this.dialogText = 'Nice work!';
       this.dialogOpen = true;
       return;
