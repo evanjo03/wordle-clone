@@ -3,7 +3,7 @@
   "description": "Webcomponent wordle-clone following open-wc recommendations",
   "license": "MIT",
   "author": "evanjo03",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "dist/src/index.js",
   "module": "dist/src/index.js",
   "exports": {
@@ -30,8 +30,7 @@
   },
   "dependencies": {
     "@lion/dialog": "^0.14.0",
-    "lit": "^2.0.2",
-    "user": "^0.0.0"
+    "lit": "^2.0.2"
   },
   "devDependencies": {
     "@custom-elements-manifest/analyzer": "^0.4.17",
